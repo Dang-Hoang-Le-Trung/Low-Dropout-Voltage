@@ -28,4 +28,4 @@ Detailed simulations were performed using **Cadence Virtuoso** (ADE-XL), includi
 * **Transient Response:** Testing $V_{OUT}$ stability against sudden load and line changes.
 
 ---
-*Author: **Đặng Hoàng Lê Trung** - Ho Chi Minh City University of Technology (HCMUT - VNU)*
+*Author: **Dang Hoang Le Trung** - Ho Chi Minh City University of Technology (HCMUT - VNU)*
