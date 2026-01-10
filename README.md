@@ -12,7 +12,7 @@ The regulator is designed to provide a stable 0.75V output from a 1.2V supply:
 | **Input Voltage ($V_{IN}$)** | 1.2 V |
 | **Output Voltage ($V_{OUT}$)** | 0.75 V (Regulated) |
 | **Reference Voltage ($V_{REF}$)** | 0.6 V |
-| **Load Current Range ($I_L$)** | 10 $\mu$A – 1 mA |
+| **Load Current Range ($I_L$)** | 10 uA – 1 mA |
 | **Pass Device** | PMOS |
 
 ## 🏗 Circuit Architecture
@@ -25,10 +25,10 @@ The project compares two methods to ensure the control loop does not oscillate:
 
 | Metric | Internal (Miller RC) | External Compensation |
 | :--- | :--- | :--- |
-| **Stability Method** | Miller RC network to shift the dominant pole. | Large load capacitor (nF to $\mu$F). |
-| **Unity Gain Bandwidth (UGB)** | 22.84 MHz | 171.9 KHz |
-| **Phase Margin** | -85.83° (Unstable) | 84.86° (Highly Stable) |
-| **PSRR @ 1MHz** | 34.01 dB | 48.95 dB |
+| **Stability Method** | Miller RC network to shift the dominant pole. | Large load capacitor (nF to uF). |
+| **Unity Gain Bandwidth (UGB)** | 304 KHz | 171.9 KHz |
+| **Phase Margin** | 88.7527° (stable) | 84.86° (Stable) |
+| **PSRR @ 1MHz** | 0.234 dB | 48.95 dB |
 
 ### Key Findings:
 * **External Compensation** provides superior **PSRR** and high stability but requires significant silicon area (off-chip capacitor), making it less suitable for high-density SoC applications.
