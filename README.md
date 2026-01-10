@@ -1,7 +1,7 @@
 # Design and Comparison of Internal vs. External Compensation for LDO Regulators
 
 ## 📌 Project Overview
-This project focuses on the design and performance analysis of a **Low-Dropout (LDO) Voltage Regulator** implemented using **65nm CMOS technology**. The study evaluates the trade-offs between two primary stability techniques: **Internal Compensation** (using a Miller RC network) and **External Compensation**.
+This project focuses on the design and performance analysis of a **Low-Dropout (LDO) Voltage Regulator** implemented using **65nm CMOS technology**. The study evaluates the trade-offs between two primary stability techniques: **Internal Compensation** and **External Compensation**.
 
 ## 🛠 Technical Specifications
 The regulator is designed to provide a stable 0.75V output from a 1.2V supply:
@@ -16,7 +16,7 @@ The regulator is designed to provide a stable 0.75V output from a 1.2V supply:
 | **Pass Device** | PMOS |
 
 ## 🏗 Circuit Architecture
-* **Error Amplifier:** A 2-stage architecture featuring a 6-transistor differential pair with an NMOS active load.
+* **Error Amplifier:** A 1-stage architecture featuring a 6-transistor differential pair with an NMOS active load.
 * **Pass Device:** A PMOS transistor designed to remain in the saturation region to ensure precise regulation across the full load range.
 * **Control Loop:** Utilizes negative feedback to compare the sampled output voltage against the reference.
 
