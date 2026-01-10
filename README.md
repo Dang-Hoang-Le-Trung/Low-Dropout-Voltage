@@ -42,4 +42,4 @@ Simulations were performed using **Cadence Virtuoso (ADE-XL)**, including:
 
 ---
 **Author:** Dang Hoang Le Trung
-**University:** Ho Chi Minh City University of Technology (HCMUT - VNU)
+**University:** Ho Chi Minh City University of Technology (HCMUT - VNUHCM)
