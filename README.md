@@ -1,31 +1,45 @@
 # Design and Comparison of Internal vs. External Compensation for LDO Regulators
 
 ## 📌 Project Overview
-This project focuses on the design process of a **Low-Dropout (LDO) Voltage Regulator** using **65nm CMOS technology**. The primary goal is to evaluate and compare the performance of **Internal Compensation** (Miller RC) versus **External Compensation** in terms of stability, Power Supply Ripple Rejection (PSRR), and transient response.
+This project focuses on the design and performance analysis of a **Low-Dropout (LDO) Voltage Regulator** implemented using **65nm CMOS technology**. The study evaluates the trade-offs between two primary stability techniques: **Internal Compensation** (using a Miller RC network) and **External Compensation**.
 
 ## 🛠 Technical Specifications
-The regulator is designed to provide a stable output of **0.75V** from a **1.2V** supply:
+The regulator is designed to provide a stable 0.75V output from a 1.2V supply:
 
 | Parameter | Value |
 | :--- | :--- |
 | **Technology** | 65nm CMOS |
 | **Input Voltage ($V_{IN}$)** | 1.2 V |
-| **Output Voltage ($V_{OUT}$)** | 0.75 V |
+| **Output Voltage ($V_{OUT}$)** | 0.75 V (Regulated) |
 | **Reference Voltage ($V_{REF}$)** | 0.6 V |
-| **Load Current ($I_L$)** | 10uA – 1 mA |
+| **Load Current Range ($I_L$)** | 10 $\mu$A – 1 mA |
 | **Pass Device** | PMOS |
 
-## 🔍 Key Analysis & Results
-The project provides a deep dive into the trade-offs between two compensation techniques:
+## 🏗 Circuit Architecture
+* **Error Amplifier:** A 2-stage architecture featuring a 6-transistor differential pair with an NMOS active load.
+* **Pass Device:** A PMOS transistor designed to remain in the saturation region to ensure precise regulation across the full load range.
+* **Control Loop:** Utilizes negative feedback to compare the sampled output voltage against the reference.
 
-* **External Compensation:** Offers higher **PSRR** and superior stability but requires a larger silicon area, making it less ideal for System-on-Chip (SoC) applications.
-* **Internal Compensation:** Utilizes a Miller RC network to shift the dominant pole, providing a compact solution at the cost of increased mid-frequency noise.
+## 🔍 Compensation & Stability Analysis
+The project compares two methods to ensure the control loop does not oscillate:
 
-## 📊 Simulations
-Detailed simulations were performed using **Cadence Virtuoso** (ADE-XL), including:
-* **DCOP Analysis:** Ensuring all transistors operate in the saturation region.
-* **AC Analysis:** Evaluating Loop Gain, Phase Margin, and PSRR.
-* **Transient Response:** Testing $V_{OUT}$ stability against sudden load and line changes.
+| Metric | Internal (Miller RC) | External Compensation |
+| :--- | :--- | :--- |
+| **Stability Method** | Miller RC network to shift the dominant pole. | Large load capacitor (nF to $\mu$F). |
+| **Unity Gain Bandwidth (UGB)** | 22.84 MHz | 171.9 KHz |
+| **Phase Margin** | -85.83° (Unstable) | 84.86° (Highly Stable) |
+| **PSRR @ 1MHz** | 34.01 dB | 48.95 dB |
+
+### Key Findings:
+* **External Compensation** provides superior **PSRR** and high stability but requires significant silicon area (off-chip capacitor), making it less suitable for high-density SoC applications.
+* **Internal Compensation** allows for a more compact, capacitor-less design but requires careful optimization to manage mid-frequency noise and stability.
+
+## 📊 Simulation Environment
+Simulations were performed using **Cadence Virtuoso (ADE-XL)**, including:
+* **DCOP Analysis:** To verify saturation for all transistors across the load current sweep.
+* **AC Analysis:** To extract Loop Gain, Phase Margin, and PSRR characteristics.
+* **Transient Response:** To measure $V_{OUT}$ stability during abrupt load or line transitions.
 
 ---
-*Author: **Dang Hoang Le Trung** - Ho Chi Minh City University of Technology (HCMUT - VNU)*
+**Author:** Dang Hoang Le Trung
+**University:** Ho Chi Minh City University of Technology (HCMUT - VNU)
